@@ -18,10 +18,11 @@ public class Server {
 
         System.out.println("server started, listening on :" + ssc.getLocalAddress());
         Selector selector = Selector.open();
-        ssc.register(selector, SelectionKey.OP_ACCEPT);
+        ssc.register(selector, SelectionKey.OP_ACCEPT);//注册
 
         while(true) {
-            selector.select();
+
+            selector.select();//阻塞
             Set<SelectionKey> keys = selector.selectedKeys();
             Iterator<SelectionKey> it = keys.iterator();
             while(it.hasNext()) {

@@ -56,8 +56,9 @@ public class PoolServer {
     public void listen() throws IOException {
         // 轮询访问selector  
         while (true) {
-            //
+            //阻塞
             selector.select();
+            // selector.selectNow() //不阻塞
             //
             Iterator ite = this.selector.selectedKeys().iterator();
             while (ite.hasNext()) {
